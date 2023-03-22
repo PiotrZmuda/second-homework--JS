@@ -1,26 +1,31 @@
 //  DANE WEJŚCIOWE
 const people = [
   {
-    firstName: "Bartolomeo",
+    firstName: "Bartolomeo", // rabona
     lastName: "Lozano",
   },
   {
-    firstName: "Mateo",
+    firstName: "Mateo", // tamazo
     lastName: "Loza",
   },
 ];
 
 function rename(array) {
-  const mappedFirstName = array.map((value) => value.firstName.substring(0, 3).split("").reverse().join(""));
-  console.log("FirstName", mappedFirstName);
 
-  const mappedLAstName = array.map((value) => value.lastName.slice(-3).split("").reverse().join(""));
-  console.log("LastName", mappedLAstName);
+  let createNickname = {
+    ...people
+  }
+  console.log(createNickname)
+  
+  const nickname = array.map((value) => 
+  value.firstName.substring(0, 3).split("").reverse().join("") + value.lastName.slice(-3).split("").reverse().join("") );
+  console.log("nickname", nickname);
 
-  const fullName = mappedFirstName;
-  return fullName;
+  const fullNickname = nickname.map((value) => value.substring(0,1).toUpperCase() + value.substring(1).toLowerCase())
+  console.log("fullNickname", fullNickname)
 }
-console.log(rename(people));
+
+rename(people)
 
 /* 
         1. Napisz funkcję mapującą, która utworzy klucz(właściwość) nickname na każdej osobie w tablicy w następujący sposób:

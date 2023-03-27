@@ -120,7 +120,7 @@ function getFavouriteColor(number = 5){
 
 Object.prototype.getFavouriteColor = getFavouriteColor
 
-people3.forEach((person)=> person.getFavouriteColor())
+people3.forEach((person)=> person.getFavouriteColor(3))
 
 /*
     3. 
@@ -155,20 +155,19 @@ const people4 = [
 const colors2 = ["red", "green", "yellow", "blue", "pink", "orange"];
 
 
-function getFavouriteColor(person, number = 5){
+function getFavouriteColor2(person, number = 5){
   if(number < 1){
     console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1")
   }else if(number >= 30 ){
     console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30")
   }
   const sum = (person.firstName.length + person.lastName.length + person.nickname.length - number) % colors2.length
-  console.log(colors[Math.abs(sum)])
+  console.log(colors2[Math.abs(sum)])
 }
 
-for(person2 of people4){
-  getFavouriteColor(person,3)
+for(person of people4){
+  getFavouriteColor2(person,3)
 }
-
 
 /* 4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
     a) funkcja powinna przyjąć 2 parametry (obiekt osoby i liczbę z zakresu 1 - 30)

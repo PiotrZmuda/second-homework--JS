@@ -144,6 +144,30 @@ people3.forEach((person)=> person.getFavouriteColor())
     dowoloną ilość kolorów
 */
 
+const people4 = [
+  {
+    firstName: "Bartolomeo", //22 words
+    lastName: "Lozano",
+    nickname: "Rabona",
+  },
+];
+
+const colors2 = ["red", "green", "yellow", "blue", "pink", "orange"];
+
+
+function getFavouriteColor(person, number = 5){
+  if(number < 1){
+    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1")
+  }else if(number >= 30 ){
+    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30")
+  }
+  const sum = (person.firstName.length + person.lastName.length + person.nickname.length - number) % colors2.length
+  console.log(colors[Math.abs(sum)])
+}
+
+for(person2 of people4){
+  getFavouriteColor(person,3)
+}
 
 
 /* 4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.

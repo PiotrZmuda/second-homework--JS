@@ -223,6 +223,31 @@ for(person of people4){
     - funkcja może korzystać ze zmiennych i parametrów funkcji zewnętrznych (czyli tych w których się znajduje)
 */
 
+const multi = (a) => {
+  return (b) => {
+    return a * b;
+  };
+};
+console.log(multi(2)(3));
+
+const multiplyBySix = (a) => {
+  return a * 6;
+};
+
+console.log(multiplyBySix(10));
+
+const multi2 = (a) => {
+  return (b) => {
+    return (c) => {
+      return (d) => {
+        return a * b * c * d;
+      };
+    };
+  };
+};
+console.log(multi2(4)(5)(6)(10));
+
+
 /*
     **7. Rekurencja
      a) Mając zagnieżdżony obiekt, wyciągnij z niego wszystkie imiona i dodaj do tablicy

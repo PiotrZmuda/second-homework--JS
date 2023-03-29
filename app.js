@@ -11,16 +11,16 @@ const people = [
   },
 ];
 
-function mapFunction(value){
-  let nickName = 
-  value.firstName.slice(0, 3).toLowerCase().split("").reverse().join("") + 
-  value.lastName.slice(-3).toLowerCase().split("").reverse().join("")
-  nickName = nickName.charAt(0).toUpperCase() + nickName.slice(1)
-  newPersons = {...value, nickName}
-  return newPersons
+function mapFunction(value) {
+  let nickName =
+    value.firstName.slice(0, 3).toLowerCase().split("").reverse().join("") +
+    value.lastName.slice(-3).toLowerCase().split("").reverse().join("");
+  nickName = nickName.charAt(0).toUpperCase() + nickName.slice(1);
+  newPersons = { ...value, nickName };
+  return newPersons;
 }
 
-console.log(people.map(mapFunction))
+console.log(people.map(mapFunction));
 
 /* 
     1. Napisz funkcję mapującą, która utworzy klucz(właściwość) nickname na każdej osobie w tablicy w następujący sposób:
@@ -48,6 +48,8 @@ console.log(people.map(mapFunction))
 */
 
 //  DANE WEJŚCIOWE
+
+
 const people2 = [
   {
     firstName: "Bartolomeo",
@@ -86,6 +88,7 @@ people2.forEach((person) => person.introduceYourself()); // b)
         nickname: "Rabona",
         introduceYourself: // tutaj ma się znajdować funkcja
     },
+
     b) za pomocą pętli forEach, wywołaj funkcję powitalną dla każdego elementu tablicy. W rezultacie na ekranie powinien
     pojawić się tekst powitalny dla każdej osoby w tablicy
     Hints:
@@ -107,20 +110,26 @@ const people3 = [
 
 const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
 
-
-function getFavouriteColor(number = 5){
-  if(number < 1){
-    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1")
-  }else if(number >= 30 ){
-    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30")
+function getFavouriteColor(number = 5) {
+  if (number < 1) {
+    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1");
+    return;
+  } else if (number >= 30) {
+    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30");
+    return;
   }
-  const index = (this.firstName.length + this.lastName.length + this.nickname.length - number) % colors.length
-  console.log(colors[Math.abs(index)])
+  const index =
+    (this.firstName.length +
+      this.lastName.length +
+      this.nickname.length -
+      number) %
+    colors.length;
+  console.log(colors[Math.abs(index)]);
 }
 
-Object.prototype.getFavouriteColor = getFavouriteColor
+Object.prototype.getFavouriteColor = getFavouriteColor;
 
-people3.forEach((person)=> person.getFavouriteColor(3))
+people3.forEach((person) => person.getFavouriteColor(10));
 
 /*
     3. 
@@ -154,19 +163,23 @@ const people4 = [
 
 const colors2 = ["red", "green", "yellow", "blue", "pink", "orange"];
 
-
-function getFavouriteColor2(person, number = 5){
-  if(number < 1){
-    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1")
-  }else if(number >= 30 ){
-    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30")
+function getFavouriteColor2(person, number = 5) {
+  if (number < 1) {
+    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1");
+  } else if (number >= 30) {
+    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30");
   }
-  const sum = (person.firstName.length + person.lastName.length + person.nickname.length - number) % colors2.length
-  console.log(colors2[Math.abs(sum)])
+  const sum =
+    (person.firstName.length +
+      person.lastName.length +
+      person.nickname.length -
+      number) %
+    colors2.length;
+  console.log(colors2[Math.abs(sum)]);
 }
 
-for(person of people4){
-  getFavouriteColor2(person,3)
+for (person of people4) {
+  getFavouriteColor2(person, 3);
 }
 
 /* 4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
@@ -247,7 +260,6 @@ const multi2 = (a) => {
 };
 console.log(multi2(4)(5)(6)(10));
 
-
 /*
     **7. Rekurencja
      a) Mając zagnieżdżony obiekt, wyciągnij z niego wszystkie imiona i dodaj do tablicy
@@ -296,3 +308,4 @@ const nestedObject = {
     },
   ],
 };
+

@@ -49,7 +49,6 @@ console.log(people.map(mapFunction));
 
 //  DANE WEJŚCIOWE
 
-
 const people2 = [
   {
     firstName: "Bartolomeo",
@@ -233,53 +232,53 @@ const people5 = [
   {
     firstName: "Piotrek",
     lastName: "Kowalski",
-    nickname: "Zmijka",
+    nickname: "Zmija",
   },
 ];
 
-const newObj = people5.filter((person) => {
-  const { firstName, lastName, nickname } = person;
-  return (
-    firstName.slice(-1) == "a" ||
-    firstName.slice(-1) == "k" &&
-      lastName.length > 6 &&
-      nickname.includes("a")
-  );
-}).map((person) => {
-  const { firstName, lastName, nickname } = person;
-  const randomNumber = Math.floor(Math.random() * 101);
-  let isElite = false;
-  if (randomNumber === 1 || randomNumber % 15 === 0 || isPrime(randomNumber)) {
-    isElite = true;
-  }
-  return { firstName, lastName, nickname, isElite };
-}).map(({ firstName, lastName, nickname, isElite }) => {
-  return { firstName: lastName, lastName: firstName, nickname, isElite };
-}).reduce((acc, curr) => {
-  return { ...curr, ...acc };
-}, {})
+const newObj = people5
+  .filter((person) => {
+    const { firstName, lastName, nickname } = person;
+    return (
+      firstName.slice(-1) == "a" ||
+      (firstName.slice(-1) == "k" &&
+        lastName.length > 6 &&
+        nickname.includes("a"))
+    );
+  })
+  .map((person) => {
+    const { firstName, lastName, nickname } = person;
+    const randomNumber = Math.floor(Math.random() * 101);
+    let isElite = false;
 
-const sortedObj = Object.fromEntries(
-  Object.entries(newObj).sort()
-);
-
-// console.log(newObj);
-
-
-function isPrime(n) {
-  if (n < 2) {
-    return false;
-  }
-  for (let i = 2; i < n; i++) {
-    if (n % i === 0) {
-      return false;
+    function isPrime(n) {
+      if (n < 2) {
+        return false;
+      }
+      for (let i = 2; i < n; i++) {
+        if (n % i === 0) {
+          return false;
+        }
+      }
+      return true;
     }
-  }
-  return true;
-}
 
+    if (randomNumber === 1 || randomNumber % 15 === 0 || isPrime(randomNumber)) {
+      isElite = true;
+    }
+    return { firstName, lastName, nickname, isElite };
+  })
+  .map(({ firstName, lastName, nickname, isElite }) => {
+    return { firstName: lastName, lastName: firstName, nickname, isElite };
+  })
+  .reduce((acc, curr) => {
+    return { ...curr, ...acc };
+  }, {});
+
+const sortedObj = Object.fromEntries(Object.entries(newObj).sort());
 
 console.log(sortedObj);
+
 /*
     *6. Currying function
     a) Napisz taką funkcję mnożącą 2 liczby, aby możliwe były następujące wywołania:
@@ -365,4 +364,3 @@ const nestedObject = {
     },
   ],
 };
-

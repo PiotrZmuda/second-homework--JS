@@ -166,8 +166,10 @@ const colors2 = ["red", "green", "yellow", "blue", "pink", "orange"];
 function getFavouriteColor2(person, number = 5) {
   if (number < 1) {
     console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1");
+    return;
   } else if (number >= 30) {
     console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30");
+    return;
   }
   const sum =
     (person.firstName.length +
@@ -222,7 +224,62 @@ for (person of people4) {
     z tym problemu :)
     f) posortuj tablicę alfabetycznie
 */
+const people5 = [
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+    nickname: "Rabona",
+  },
+  {
+    firstName: "Piotrek",
+    lastName: "Kowalski",
+    nickname: "Zmijka",
+  },
+];
 
+const newObj = people5.filter((person) => {
+  const { firstName, lastName, nickname } = person;
+  return (
+    firstName.slice(-1) == "a" ||
+    firstName.slice(-1) == "k" &&
+      lastName.length > 6 &&
+      nickname.includes("a")
+  );
+}).map((person) => {
+  const { firstName, lastName, nickname } = person;
+  const randomNumber = Math.floor(Math.random() * 101);
+  let isElite = false;
+  if (randomNumber === 1 || randomNumber % 15 === 0 || isPrime(randomNumber)) {
+    isElite = true;
+  }
+  return { firstName, lastName, nickname, isElite };
+}).map(({ firstName, lastName, nickname, isElite }) => {
+  return { firstName: lastName, lastName: firstName, nickname, isElite };
+}).reduce((acc, curr) => {
+  return { ...curr, ...acc };
+}, {})
+
+const sortedObj = Object.fromEntries(
+  Object.entries(newObj).sort()
+);
+
+// console.log(newObj);
+
+
+function isPrime(n) {
+  if (n < 2) {
+    return false;
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+console.log(sortedObj);
 /*
     *6. Currying function
     a) Napisz taką funkcję mnożącą 2 liczby, aby możliwe były następujące wywołania:

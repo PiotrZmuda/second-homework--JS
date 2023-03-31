@@ -1,26 +1,3 @@
-//  DANE WEJŚCIOWE
-
-const people = [
-  {
-    firstName: "Bartolomeo",
-    lastName: "Lozano",
-  },
-  {
-    firstName: "Mateo",
-    lastName: "Loza",
-  },
-];
-
-function mapFunction(value) {
-  let nickName =
-    value.firstName.slice(0, 3).toLowerCase().split("").reverse().join("") +
-    value.lastName.slice(-3).toLowerCase().split("").reverse().join("");
-  nickName = nickName.charAt(0).toUpperCase() + nickName.slice(1);
-  newPersons = { ...value, nickName };
-  return newPersons;
-}
-
-console.log(people.map(mapFunction));
 
 /* 
     1. Napisz funkcję mapującą, która utworzy klucz(właściwość) nickname na każdej osobie w tablicy w następujący sposób:
@@ -49,6 +26,54 @@ console.log(people.map(mapFunction));
 
 //  DANE WEJŚCIOWE
 
+const people = [
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+  },
+  {
+    firstName: "Mateo",
+    lastName: "Loza",
+  },
+];
+
+function mapFunction(value) {
+  let nickName =
+    value.firstName.slice(0, 3).toLowerCase().split("").reverse().join("") +
+    value.lastName.slice(-3).toLowerCase().split("").reverse().join("");
+  nickName = nickName.charAt(0).toUpperCase() + nickName.slice(1);
+  newPersons = { ...value, nickName };
+  return newPersons;
+}
+
+console.log(people.map(mapFunction));
+
+
+/* 
+    2. 
+    a) Do każdego obiektu dodaj funkcję introduceYourself, która za pomocą słówka this wyświetli w konsoli tekst powitalny.
+    Oczywiście tekst powinien wyświetlić się dopiero po wywołaniu funkcji.
+    Dla powyższego przykładu tekst powinien wyglądać w następujący sposób:
+    "Cześć jestem Bartolomeo Lozano, ale w szkole mówią na mnie [Rabona]"
+    Natomiast wywołanie funkcji: people[0].introduceYourself()
+    Obiekt z przykładu powinien wyglądać w ten sposób
+    {
+        firstName: "Bartolomeo",
+        lastName: "Lozano",
+        nickname: "Rabona",
+        introduceYourself: // tutaj ma się znajdować funkcja
+    },
+
+    b) za pomocą pętli forEach, wywołaj funkcję powitalną dla każdego elementu tablicy. W rezultacie na ekranie powinien
+    pojawić się tekst powitalny dla każdej osoby w tablicy
+    Hints:
+    - nie używaj w tym zadaniu funkcji strzałkowej, ponieważ słówko this Ci nie zadziała i nie będziesz miał(a)
+    dostępu do this.firstName lastName i nickname
+    - postaraj się zdefiniować funkcję powitalną tylko raz (nie rób tego w pętli, ani funkcji map)
+    
+*/
+//  DANE WEJŚCIOWE
+
 const people2 = [
   {
     firstName: "Bartolomeo",
@@ -73,28 +98,27 @@ function introduceYourself() {
 people2[0].introduceYourself(); // a)
 people2.forEach((person) => person.introduceYourself()); // b)
 
-/* 
-    2. 
-    a) Do każdego obiektu dodaj funkcję introduceYourself, która za pomocą słówka this wyświetli w konsoli tekst powitalny.
-    Oczywiście tekst powinien wyświetlić się dopiero po wywołaniu funkcji.
-    Dla powyższego przykładu tekst powinien wyglądać w następujący sposób:
-    "Cześć jestem Bartolomeo Lozano, ale w szkole mówią na mnie [Rabona]"
-    Natomiast wywołanie funkcji: people[0].introduceYourself()
-    Obiekt z przykładu powinien wyglądać w ten sposób
-    {
-        firstName: "Bartolomeo",
-        lastName: "Lozano",
-        nickname: "Rabona",
-        introduceYourself: // tutaj ma się znajdować funkcja
-    },
 
-    b) za pomocą pętli forEach, wywołaj funkcję powitalną dla każdego elementu tablicy. W rezultacie na ekranie powinien
-    pojawić się tekst powitalny dla każdej osoby w tablicy
-    Hints:
-    - nie używaj w tym zadaniu funkcji strzałkowej, ponieważ słówko this Ci nie zadziała i nie będziesz miał(a)
-    dostępu do this.firstName lastName i nickname
-    - postaraj się zdefiniować funkcję powitalną tylko raz (nie rób tego w pętli, ani funkcji map)
-    
+/*
+    3. 
+    a) Dodaj do każdego obiektu funkcję getFavouriteColor
+    b) funkcja ma przyjmować jeden parametr typu number z zakresu 1 - 30
+    c) jeżeli podany parametr jest poza zakresem, powinien wyświetlić się odpowiedni komunikat
+        - podałeś za małą liczbę, liczba nie może być mniejsza niż 1
+        - podałeś za dużą liczbę, liczba nie może być większa niż 30
+    d) w przypadku wywołania funkcji bez parametru, powinniśmy ustawić domyślną wartość na 5
+    e) funkcja powinna zsumować wszystkie litery imienia, nazwiska i przezwiska, 
+    odjąć od tej sumy liczbę wprowadzoną w parametrze, a następnie za pomocą działania modulo (%) względem długości tablicy kolorów
+    wyznaczyć index
+    f) za pomocą indexu funkcja powinna wyciągnąć odpowiedni kolor z tablicy i wyświetlić go w konsoli.
+    Dla powyższego przykładu i liczby 5 wprowadzonej w parametrze, powinniśmy uzyskać wynik:
+    (22 - 5) % 6 = 5
+    console.log("orange")
+    Hints
+    - jeżeli po odjęciu parametru funkcji od sumy liter uzyskacie wartośc ujemną, możecie użyć metody z biblioteki Math, 
+    Math.abs(-20), która zamieni liczbę na wartość absolutną, czyli dodatnią
+    - w funkcji musicie użyć słówka this, parametru i tablicy, która jest na zewnątrz, tablica z kolorami może mieć
+    dowoloną ilość kolorów
 */
 
 //  DANE WEJŚCIOWE
@@ -130,26 +154,12 @@ Object.prototype.getFavouriteColor = getFavouriteColor;
 
 people3.forEach((person) => person.getFavouriteColor(10));
 
-/*
-    3. 
-    a) Dodaj do każdego obiektu funkcję getFavouriteColor
-    b) funkcja ma przyjmować jeden parametr typu number z zakresu 1 - 30
-    c) jeżeli podany parametr jest poza zakresem, powinien wyświetlić się odpowiedni komunikat
-        - podałeś za małą liczbę, liczba nie może być mniejsza niż 1
-        - podałeś za dużą liczbę, liczba nie może być większa niż 30
-    d) w przypadku wywołania funkcji bez parametru, powinniśmy ustawić domyślną wartość na 5
-    e) funkcja powinna zsumować wszystkie litery imienia, nazwiska i przezwiska, 
-    odjąć od tej sumy liczbę wprowadzoną w parametrze, a następnie za pomocą działania modulo (%) względem długości tablicy kolorów
-    wyznaczyć index
-    f) za pomocą indexu funkcja powinna wyciągnąć odpowiedni kolor z tablicy i wyświetlić go w konsoli.
-    Dla powyższego przykładu i liczby 5 wprowadzonej w parametrze, powinniśmy uzyskać wynik:
-    (22 - 5) % 6 = 5
-    console.log("orange")
-    Hints
-    - jeżeli po odjęciu parametru funkcji od sumy liter uzyskacie wartośc ujemną, możecie użyć metody z biblioteki Math, 
-    Math.abs(-20), która zamieni liczbę na wartość absolutną, czyli dodatnią
-    - w funkcji musicie użyć słówka this, parametru i tablicy, która jest na zewnątrz, tablica z kolorami może mieć
-    dowoloną ilość kolorów
+
+
+/* 4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
+    a) funkcja powinna przyjąć 2 parametry (obiekt osoby i liczbę z zakresu 1 - 30)
+    b) funkcja powinna wykonać dokładnie takie samo działanie jak poprzednia
+    c) Za pomocą pętli for of przeiteruj po wszystkich osobach z tablicy i wyświetl ich ulubione kolory
 */
 
 const people4 = [
@@ -182,12 +192,6 @@ function getFavouriteColor2(person, number = 5) {
 for (person of people4) {
   getFavouriteColor2(person, 3);
 }
-
-/* 4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
-    a) funkcja powinna przyjąć 2 parametry (obiekt osoby i liczbę z zakresu 1 - 30)
-    b) funkcja powinna wykonać dokładnie takie samo działanie jak poprzednia
-    c) Za pomocą pętli for of przeiteruj po wszystkich osobach z tablicy i wyświetl ich ulubione kolory
-*/
 
 /*
     5. Zadanie polega na użyciu .filter() .map() .reduce w wersji łańcuchowej,
@@ -276,8 +280,11 @@ const newObj = people5
   }, {});
 
 const sortedObj = Object.fromEntries(Object.entries(newObj).sort());
-
 console.log(sortedObj);
+
+// Bez pomocy internetu bym tego zadania na tym etapie nigdy nie zrobił :D chciałbym w feedbacku jak najdokładniejszą analizę lub inne jak najbardziej zrozumiałe rozwiązania tego zadania.
+
+
 
 /*
     *6. Currying function
@@ -364,3 +371,23 @@ const nestedObject = {
     },
   ],
 };
+
+const getAllNames = (obj,arrOfNames = []) => {
+
+  if (obj.hasOwnProperty("name")) {
+    arrOfNames.push(obj.name);
+  }
+  if (obj.hasOwnProperty("name2")) {
+    arrOfNames.push(obj.name2);
+  }
+  if (obj.hasOwnProperty("name3")) {
+    arrOfNames.push(obj.name3);
+  }
+  if (obj.hasOwnProperty("children")) {
+    obj.children.forEach(child => getAllNames(child, arrOfNames));
+  }
+  return arrOfNames;
+};
+
+const result = getAllNames(nestedObject);
+console.log(result)

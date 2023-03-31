@@ -285,7 +285,6 @@ console.log(sortedObj);
 // Bez pomocy internetu bym tego zadania na tym etapie nigdy nie zrobił :D chciałbym w feedbacku jak najdokładniejszą analizę lub inne jak najbardziej zrozumiałe rozwiązania tego zadania.
 
 
-
 /*
     *6. Currying function
     a) Napisz taką funkcję mnożącą 2 liczby, aby możliwe były następujące wywołania:

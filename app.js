@@ -236,7 +236,7 @@ const people5 = [
   {
     firstName: "Piotrek",
     lastName: "Kowalski",
-    nickname: "Zmija",
+    nickname: "Zmuda",
   },
 ];
 
